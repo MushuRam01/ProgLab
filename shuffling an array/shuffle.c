@@ -1,54 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h> // ise the isalpha(); function
-// read fischer-yates wiki for permutations
- 
+#include <ctype.h>
+#include <time.h>
 
-int main (void) {
+// Function prototypes
+void ShuffleArray(int *A, int n);
+void swap(int *A, int i, int j);
+void printArray(int *A, int n);
+
+int main(void) {
+    // Initialize the substitution key array S
     int S[26];
-    int test[5];
-    int i;
-    for (i=0; i<26, i=i+1;){
-        S[i]=i ;
-    }
-    for( i=0; i<26; i=i+1){
-        printf("%d\n", S[i]);
-        
-    }
-    for (i=0; i<5, i=i+1;){
-        S[i]=i ;
+    for (int i = 0; i < 26; i++) {
+        S[i] = i;
     }
 
+    // Seed the random number generator
+    srand(time(NULL));
 
-    //write code here to encripyt a text file after refernecing to the shuffled/rotated lookup table
-    
+    // Shuffle the array to create a random substitution key
+    ShuffleArray(S, 26);
 
-
-
-
-
+    // Print the shuffled array to verify the result
+    printf("Shuffled Substitution Key:\n");
+    printArray(S, 26);
 
     return 0;
 }
 
-
-
-void ShuffleArray(int * A,int n){
-    srand(12345); // comsider i as the cursor to the array
-    // n is the size of the array thereore maximum index is n-1
-    int i ;
-    for( i=n-1;i>0;i=i-1){
-        j= rand()%i;
-        swap(A,i,j); //rewrite this properly 
+// Fisher-Yates shuffle implementation
+void ShuffleArray(int *A, int n) {
+    for (int i = n - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        swap(A, i, j);
     }
 }
 
-void RotateArr(int* A, int n, int rot){
-    int* buff = (int*) malloc(rot * sizeof(int));
-    memcpy(buff, A , rot * sizeof(int));
-    for(i=rot;i<n;i=i+1){
-        //shift places
-    }
-    memcpy();//copy from buffer to a the last remaining elements 
+// Helper function to swap two elements in an array
+void swap(int *A, int i, int j) {
+    int temp = A[i];
+    A[i] = A[j];
+    A[j] = temp;
 }
 
+// Helper function to print the contents of an array
+void printArray(int *A, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%c", A[i] + 'A'); // Print as a character
+    }
+    printf("\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", A[i]); // Print as a number
+    }
+    printf("\n");
+}
