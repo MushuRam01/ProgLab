@@ -1,0 +1,21 @@
+output
+
+# C compiler output files
+*.o          # Object files
+*.obj        # Object files (Windows)
+*.exe        # Executable files (Windows)
+*.out        # Output files
+a.out        # Default GCC output
+*.so         # Shared libraries (Linux)
+*.dll        # Dynamic libraries (Windows)
+*.dylib      # Dynamic libraries (macOS)
+*.a          # Static libraries
+*.lib        # Static libraries (Windows)
+
+# Debug files
+*.dSYM/      # Debug symbols (macOS)
+*.pdb        # Debug files (Windows)
+
+# Core dumps
+core
+core.*
