@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+
 //Problem 1
 int readvalue(void) {
     int value;
@@ -23,12 +25,14 @@ void print1ton(int n){ //-----Complexity O(n) -----
         printf("%d ", i);
     }
 }
+
+
 //Problem 2
 
-void trackminmax(int n){ //-----Complexity O(n) -----
+void trackminmax( void ){ //-----Complexity O(n) -----
 
-    int initmin;
-    int initmax;
+    int initmin = INT_MAX; // largest possible vallue
+    int initmax = INT_MIN; // smallest possible value
     int k;
     int val;
     printf("Enter number of values: ");
@@ -56,6 +60,14 @@ void trackminmax(int n){ //-----Complexity O(n) -----
 }
 
 
+//Problem3    I will use merge sort to sort the array and then return the second largest element
+
+void findsecondlargest( void ){ 
+
+    
+
+
+}
 
 
 
@@ -68,7 +80,9 @@ int main() {
     printf("\n");
     print1ton(n);
     printf("\n");
-    trackminmax(n);
+    trackminmax();
+    findsecondlargest();
+    
     return 0;
    
 }
