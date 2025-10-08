@@ -8,7 +8,6 @@ int readvalue(void) {
     printf("Enter an integer: ");
     scanf("%d", &value);
     return value;
-
 }
 
 void printnto0(int n){ //-----Complexity O(n) -----
@@ -17,7 +16,6 @@ void printnto0(int n){ //-----Complexity O(n) -----
     if(n > 0){
         printnto0( n-1);
     }
-   
 }
 
 void print1ton(int n){ //-----Complexity O(n) -----
@@ -53,27 +51,56 @@ void trackminmax( void ){ //-----Complexity O(n) -----
     else{
         printf("No values to read.\n");
         return;
-
     }
-
-    
 }
 
 
-//Problem3    I will use merge sort to sort the array and then return the second largest element
+//Problem3    I will store values in array then  use sorting to find second largest element
 
-void findsecondlargest( void ){ 
+void makearray(int arr[], int n){
+    for(int i=0; i<n; i++){
+        arr[i] = readvalue();
+    }
+}
 
-    
-
-
+// A function to swap two elements
+void swap(int* xp, int* yp) {
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
 }
 
 
+// An optimized version of Bubble Sort that returns a pointer to the sorted array
+int* bubbleSort(int arr[], int n) {
+    int i, j;
+    int swapped;
+    for (i = 0; i < n - 1; i++) {
+        swapped = 0;
+        // Last i elements are already in place
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+                swapped = 1;
+            }
+        }
+        // If no two elements were swapped by inner loop, then break
+        if (swapped == 0)
+            break;
+    }
+    return arr;
+}
 
+int findsecondlargest(int n){
+    int arr[n];
+    makearray(arr, n);
+    bubbleSort(arr, n);
+    return arr[n-2]; // second largest element (second from end after sorting)
+}
 
 int main() {
     int n;
+   
     printf("Enter a positive integer: ");
     scanf("%d", &n);
     printnto0(n);
@@ -81,8 +108,16 @@ int main() {
     print1ton(n);
     printf("\n");
     trackminmax();
-    findsecondlargest();
+    
+    printf("Enter number of elements for second largest: ");
+    int count;
+    scanf("%d", &count);
+    if(count >= 2) {
+        int second = findsecondlargest(count);
+        printf("Second largest: %d\n", second);
+    } else {
+        printf("Need at least 2 elements to find second largest.\n");
+    }
     
     return 0;
-   
 }
