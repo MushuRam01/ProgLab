@@ -26,6 +26,7 @@ void print1ton(int n){ //-----Complexity O(n) -----
 
 
 //Problem 2
+//2.1, 2.2 find maximum and minimum
 
 void trackminmax( void ){ //-----Complexity O(n) -----
 
@@ -55,8 +56,8 @@ void trackminmax( void ){ //-----Complexity O(n) -----
 }
 
 
-//Problem3    I will store values in array then  use sorting to find second largest element
 
+// 2.3 find second largest   I will store values in array then  use sorting to find second largest element
 void makearray(int arr[], int n){
     for(int i=0; i<n; i++){
         arr[i] = readvalue();
@@ -69,7 +70,6 @@ void swap(int* xp, int* yp) {
     *xp = *yp;
     *yp = temp;
 }
-
 
 // An optimized version of Bubble Sort that returns a pointer to the sorted array
 int* bubbleSort(int arr[], int n) {
@@ -97,6 +97,48 @@ int findsecondlargest(int n){
     bubbleSort(arr, n);
     return arr[n-2]; // second largest element (second from end after sorting)
 }
+
+// 2.4 -- find the median of a given sequence of integers from user 
+int findmedian(int n){
+    int arr[n];
+    makearray(arr,n);
+    bubbleSort(arr,n);
+    if(n%2==0){
+        return (arr[n/2] + arr[(n/2)-1])/2 ;
+    }
+    if(n%2!=0){
+        return arr[(n-1)/2];
+    }
+}
+
+
+// 2.5 -- find the kth largest integer in a given sequence of integers from user k is also given by user
+int findkthlargest(int n){
+    int arr[n];
+    int k;
+    makearray(arr, n);
+    bubbleSort(arr,n);
+    printf("enter value of k to find kth lrgest integer: ");
+    scanf("%d", &k);
+    if(k==0){
+        printf("K cannot be 0");
+        return ;
+    }
+    if(k>n){
+        printf("k cannot be larger than number of elements: ");
+        return ;
+    }
+    if(k>0 && k<=n){
+        return arr[n-k];
+    }
+    else{
+        printf("Invalid k value");
+        return ;
+    }
+
+}
+
+
 
 int main() {
     int n;
