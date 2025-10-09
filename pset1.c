@@ -121,19 +121,19 @@ int findkthlargest(int n){
     printf("enter value of k to find kth lrgest integer: ");
     scanf("%d", &k);
     if(k==0){
-        printf("K cannot be 0");
-        return ;
+        printf("K cannot be 0\n");
+        return -1; // Return error value
     }
     if(k>n){
-        printf("k cannot be larger than number of elements: ");
-        return ;
+        printf("k cannot be larger than number of elements\n");
+        return -1; // Return error value
     }
     if(k>0 && k<=n){
         return arr[n-k];
     }
     else{
-        printf("Invalid k value");
-        return ;
+        printf("Invalid k value\n");
+        return -1; // Return error value
     }
 
 }
