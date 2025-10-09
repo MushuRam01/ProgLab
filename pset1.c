@@ -161,5 +161,26 @@ int main() {
         printf("Need at least 2 elements to find second largest.\n");
     }
     
+    printf("Enter number of elements for median: ");
+    scanf("%d", &count);
+    if(count >= 2) {
+        int median = findmedian(count);
+        printf("Median: %d\n", median);
+    } else {
+        printf("Need at least 2 elements to find median.\n");
+    }
+
+    printf("Enter number of elements for kth largest: ");
+    scanf("%d", &count);
+    if(count >= 1) {            
+        int kth = findkthlargest(count);
+        if(kth != -1) { // Check for error value
+            printf("Kth largest: %d\n", kth);
+        }
+    } else {
+        printf("Need at least 1 element to find kth largest.\n");
+    }
+
+
     return 0;
 }
