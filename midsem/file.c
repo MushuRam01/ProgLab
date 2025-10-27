@@ -120,6 +120,23 @@ struct Node* createNodes(int freq[26], int* nodeCount){
     return nodes;
 }
 
+void ceasar_cipher(const char* filename, int shift){
+    int ch;
+    int scrambled;
+    int letter_index;
+    FILE *file = fopen(filename, "r");
+    if (file == NULL){
+        perror("Error opening file");
+        return;
+    }
+
+    while ((ch = fgetc(file)) != EOF){
+        letter_index= ch- 'a' ;
+        scrambled = ((letter_index + shift ) % 26) + 'a';
+        printf("%c",scrambled);
+
+    }
+}
 
 
 
@@ -142,6 +159,8 @@ int main(){
     
     // Don't forget to free the memory when done
     free(nodes);
+
+    ceasar_cipher("input.txt",12);
     
     return 0;
 }
