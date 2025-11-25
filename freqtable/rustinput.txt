@@ -1,0 +1,3 @@
+This is the first line of my Rust project.
+It shows how easy it is to read text files
+using the standard library's `fs` module!
